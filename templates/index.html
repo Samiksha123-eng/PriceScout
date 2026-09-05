@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PriceScout | AI Price Intelligence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo-area">
+            <div class="logo-icon">
+                P
+            </div>
+
+            <div>
+                <h1>PriceScout</h1>
+                <span>AI Price Intelligence</span>
+            </div>
+        </div>
+
+
+        <div class="sidebar-section">
+
+            <div class="section-label">
+                WATCHLIST
+            </div>
+
+            <form id="add-form" class="add-form">
+
+                <label>
+                    Product name
+                </label>
+
+                <input
+                    type="text"
+                    id="product-name"
+                    placeholder="e.g. Sony WH-1000XM5"
+                    required
+                >
+
+                <label>
+                    Target price
+                </label>
+
+                <div class="price-input">
+                    <span>₹</span>
+
+                    <input
+                        type="number"
+                        id="target-price"
+                        placeholder="19,999"
+                        min="1"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    id="add-btn"
+                    class="add-product-btn"
+                >
+                    <span>+</span>
+                    Add Product
+                </button>
+
+                <p
+                    class="form-error"
+                    id="form-error"
+                ></p>
+
+            </form>
+
+        </div>
+
+
+        <!-- Watchlist -->
+
+        <div class="watchlist-container">
+
+            <div class="watchlist-header">
+
+                <span>Your Products</span>
+
+                <span
+                    id="monitor-status"
+                    class="monitor-status"
+                >
+                    <i class="pulse"></i>
+                    LIVE
+                </span>
+
+            </div>
+
+            <ul
+                class="watchlist"
+                id="watchlist"
+            >
+                <li class="empty-row">
+                    No products yet.
+                </li>
+            </ul>
+
+        </div>
+
+
+        <div class="sidebar-footer">
+
+            <div class="agent-status">
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>AI Agent Active</strong>
+                    <small>Monitoring prices automatically</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- Top Navigation -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="breadcrumb">
+                    Dashboard / Price Monitoring
+                </div>
+
+                <h2>
+                    Price Intelligence
+                </h2>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="live-indicator">
+                    <span></span>
+                    Monitoring Active
+                </div>
+
+                <div class="profile">
+                    <div class="avatar">
+                        S
+                    </div>
+
+                    <div>
+                        <strong>PriceScout User</strong>
+                        <small>Personal Dashboard</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Product Detail -->
+
+        <section
+            id="detail-pane"
+            class="detail-pane"
+        >
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Start tracking a product
+                </h3>
+
+                <p>
+                    Add a product from your watchlist and let
+                    PriceScout's AI agents monitor its price,
+                    analyze trends and recommend the best action.
+                </p>
+
+                <div class="empty-features">
+
+                    <span>🤖 AI Analysis</span>
+                    <span>📈 Price Trends</span>
+                    <span>🔔 Smart Alerts</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= ALERT PANEL ================= -->
+
+    <aside class="alerts-panel">
+
+        <div class="alerts-header">
+
+            <div>
+
+                <span class="panel-label">
+                    ACTIVITY
+                </span>
+
+                <h3>
+                    Smart Alerts
+                </h3>
+
+            </div>
+
+            <div class="notification-icon">
+                🔔
+            </div>
+
+        </div>
+
+
+        <div class="alert-summary">
+
+            <div>
+                <strong id="alert-count">0</strong>
+                <span>recent alerts</span>
+            </div>
+
+            <div class="alert-live">
+                LIVE
+            </div>
+
+        </div>
+
+
+        <ul
+            id="alerts-list"
+            class="alerts-list"
+        >
+
+            <li class="empty-row">
+                No alerts yet.
+            </li>
+
+        </ul>
+
+
+        <div class="agent-flow">
+
+            <div class="flow-title">
+                AI Agent Pipeline
+            </div>
+
+            <div class="flow-step">
+                <span class="flow-number">01</span>
+
+                <div>
+                    <strong>Price Agent</strong>
+                    <small>Collecting prices</small>
+                </div>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step">
+                <span class="flow-number">02</span>
+
+                <div>
+                    <strong>Analysis Agent</strong>
+                    <small>Analyzing history</small>
+                </div>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step">
+                <span class="flow-number">03</span>
+
+                <div>
+                    <strong>Decision Agent</strong>
+                    <small>Generating recommendation</small>
+                </div>
+            </div>
+
+            <div class="flow-line"></div>
+
+            <div class="flow-step">
+                <span class="flow-number">04</span>
+
+                <div>
+                    <strong>Notification Agent</strong>
+                    <small>Sending alerts</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<script src="/static/dashboard.js"></script>
+
+</body>
+</html>
